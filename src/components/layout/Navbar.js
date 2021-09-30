@@ -1,16 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types';
 
-export class Navbar extends Component {
-    render() {
+
+const Navbar = ({ icon, title }) => {
         return (
             <nav className="navbar bg-primary">
                 <h1>
-                    {/* the props are defined on the Navbar inside the App.js component */}
-                    <i className={this.props.icon} /> {this.props.title}
-                    </h1>
+
+                    <i className={icon} /> {title}
+
+                    {/* use props inside of the Component: use curly brackets for an expression.
+                    When inside of a class based component, the way to access props is using 'this.props',
+                    and then whatever the name of the prop is. 'this.props.title'.
+                     */}
+                </h1>
             </nav>
         )
-    }
+    
 }
+
+Navbar.defaultProps = {
+    title: 'Github Finder',
+    icon: 'fab fa-github'
+};
+
+Navbar.propTypes = {
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
+};
 
 export default Navbar;
